@@ -1,9 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
 html,
 body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    margin: 0;
 }
 
 header {
@@ -25,6 +30,27 @@ header {
 
 .canvas-container {
     flex: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.canvas {
+    display: flex;
+    flex-wrap: wrap;
+    /* height and width based on desired size */
+    width: 324px;
+    height: 324px;
+    border: 2px solid black;
+    margin: 0;
+}
+
+/* style on divs created via js */
+.square {
+    /* height and width based on container size / 16 */
+    width: 20px;
+    height: 20px;
+    border: 1px solid lightgrey;
 }
 
 footer {
