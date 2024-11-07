@@ -39,6 +39,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     /* height and width based on desired size */
+    /* 320px + 4px to accommodate border */
     width: 324px;
     height: 324px;
     border: 2px solid black;
@@ -51,6 +52,7 @@ header {
     width: 20px;
     height: 20px;
     border: 1px solid lightgrey;
+    transition: background-color 0.3s; 
 }
 
 footer {

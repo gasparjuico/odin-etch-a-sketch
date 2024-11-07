@@ -10,6 +10,11 @@ function createGrid(size) {
         const square = document.createElement('div');
         square.classList.add('square');
         canvas.appendChild(square);
+
+        // Event listener to change color on hover
+        square.addEventListener('mouseenter', () => {
+            square.style.backgroundColor = 'black';
+        })
     }
 }
 
