@@ -8,6 +8,29 @@
     <script src="index.js" defer></script>
 </head>
 <body>
-    
+    <header>
+        <h1>ETCH-A-SKETCH</h1>
+    </header>
+
+    <div class="from">
+        <p>Grid Size:</p>
+        <input type="number" id="user-input">
+        <button class="submit-btn">Submit</button>
+    </div>
+
+    <div class="buttons-container">
+        <div class="color-selection">
+            <input type="radio" id="black-pen" value="black-pen"> <label for="black-pen">Black</label>
+            <input type="radio" id="random-pen" value="random-pen"> <label for="random-pen">Random</label>
+            <input type="radio" id="eraser-pen" value="eraser-pen"> <label for="eraser-pen">Eraser</label>
+        </div>
+        <button class="clear-btn">Clear</button>
+    </div>
+
+    <div class="canvas"></div>
+
+    <footer>
+        <small>Copyright ©️ gasparjuico 2024</small>
+    </footer>
 </body>
 </html>
