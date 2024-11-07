@@ -1,0 +1,33 @@
+html,
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+.grid-selection {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pen-selection {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.canvas-container {
+    flex: auto;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+}
