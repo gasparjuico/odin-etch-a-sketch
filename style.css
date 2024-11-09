@@ -22,7 +22,7 @@ header {
     gap: 10px;
 }
 
-.pen-selection {
+.pen-container {
     display: flex;
     justify-content: center;
     gap: 10px;
