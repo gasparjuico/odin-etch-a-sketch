@@ -20,9 +20,22 @@
 
     <div class="pen-selection">
         <div class="pen-container">
-            <input type="radio" id="black-pen" value="black-pen"> <label for="black-pen">Black</label>
-            <input type="radio" id="random-pen" value="random-pen"> <label for="random-pen">Random</label>
-            <input type="radio" id="eraser-pen" value="eraser-pen"> <label for="eraser-pen">Eraser</label>
+            <label>
+                <input type="radio" name="colorMode" value="black" checked>
+                Black
+            </label>
+            <label>
+                <input type="radio" name="colorMode" value="darken">
+                Darken
+            </label>
+            <label>
+                <input type="radio" name="colorMode" value="random">
+                Random
+            </label>
+            <label>
+                <input type="radio" name="colorMode" value="eraser">
+                Eraser
+            </label>
         </div>
         <button class="clear-btn">Clear</button>
     </div>
