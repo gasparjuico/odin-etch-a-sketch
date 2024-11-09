@@ -38,19 +38,15 @@ header {
 .canvas {
     display: flex;
     flex-wrap: wrap;
-    /* height and width based on desired size */
-    /* 320px + 4px to accommodate border */
-    width: 324px;
-    height: 324px;
+    /* 600px + borders */
+    width: 604px;
+    height: 604px;
     border: 2px solid black;
     margin: 0;
 }
 
 /* style on divs created via js */
 .square {
-    /* height and width based on container size / 16 */
-    width: 20px;
-    height: 20px;
     border: 1px solid lightgrey;
     transition: background-color 0.3s; 
 }
