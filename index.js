@@ -1,6 +1,16 @@
 const canvas = document.querySelector('.canvas');
 const userInput = document.querySelector('#user-input')
 const submitButton = document.querySelector('.submit-btn');
+const penSelection = document.querySelector('.pen-selection');
+let colorMode = 'black';
+
+penSelection.addEventListener('change', (event) => {
+    // Check if the change event originated from an input with name 'colorMode'
+    if (event.target.name === 'colorMode') {
+        colorMode = event.target.value;
+        console.log(`Color mode set to: ${colorMode}`);
+    }
+})
 
 function createGrid(size) {
     // Clear any existing content (useful if resizing grid)
