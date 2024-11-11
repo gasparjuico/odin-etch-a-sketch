@@ -2,6 +2,7 @@ const canvas = document.querySelector('.canvas');
 const userInput = document.querySelector('#user-input');
 const submitButton = document.querySelector('.submit-btn');
 const penSelection = document.querySelector('.pen-selection');
+const clearButton = document.querySelector('.clear-btn');
 let colorMode = 'black';
 
 penSelection.addEventListener('change', (event) => {
@@ -50,10 +51,12 @@ function createGrid(size) {
             } else if (colorMode === 'eraser') {
                 square.style.background = 'rgba(0, 0, 0, 0';
             }
-            
         })
     }
 }
+
+// Default to a 16x16 grid
+createGrid(16);
 
 // Helper function to generate random RGB color
 function getRandomColor() {
@@ -62,8 +65,6 @@ function getRandomColor() {
     const b = Math.floor(Math.random() * 256);
     return `rgb(${r}, ${g}, ${b})`;
 }
-
-console.log(getRandomColor())
 
 function setGridSize() {
     let size = parseInt(userInput.value);
@@ -79,4 +80,13 @@ function setGridSize() {
 
 submitButton.addEventListener('click', setGridSize);
 
-createGrid(16);
+function resetGridBackground() {
+    const squares = document.querySelectorAll('.square');
+    squares.forEach(square => {
+        square.style.background = 'rgba(0, 0, 0, 0)';
+        // Reset opacity for darken mode
+        square.dataset.opacity = '0';
+    })
+}
+
+clearButton.addEventListener('click', resetGridBackground);
