@@ -1,5 +1,5 @@
 const canvas = document.querySelector('.canvas');
-const userInput = document.querySelector('#user-input')
+const userInput = document.querySelector('#user-input');
 const submitButton = document.querySelector('.submit-btn');
 const penSelection = document.querySelector('.pen-selection');
 let colorMode = 'black';
@@ -25,14 +25,45 @@ function createGrid(size) {
         square.classList.add('square');
         square.style.width = `${squareSize}px`;
         square.style.length = `${squareSize}px`;
+        // Use style.background instead of style.opacity to retain border color
+        square.style.background = 'rgba(0, 0, 0, 0)';
+        // Initial opacity level for darken mode
+        square.dataset.opacity = '0';
         canvas.appendChild(square);
 
         // Event listener to change color on hover
         square.addEventListener('mouseenter', () => {
-            square.style.backgroundColor = 'black';
+            if (colorMode === 'black') {
+                square.style.backgroundColor = 'black';
+                square.style.opacity = '1';
+            } else if (colorMode === 'random') {
+                square.style.backgroundColor = getRandomColor();
+                square.style.opacity = '1';
+            } else if (colorMode === 'darken') {
+                // Increase opacity by 25%
+                let newOpacity = parseFloat(square.dataset.opacity) + 0.25;
+                //  Cap opacity at 100%
+                newOpacity = Math.min(newOpacity, 1)
+                square.dataset.opacity = newOpacity;
+
+                square.style.backgroundColor = `rgba(0, 0, 0, ${newOpacity})`;
+            } else if (colorMode === 'eraser') {
+                square.style.background = 'rgba(0, 0, 0, 0';
+            }
+            
         })
     }
 }
+
+// Helper function to generate random RGB color
+function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+console.log(getRandomColor())
 
 function setGridSize() {
     let size = parseInt(userInput.value);
