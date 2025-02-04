@@ -3,7 +3,17 @@ const userInput = document.querySelector('#user-input');
 const submitButton = document.querySelector('.submit-btn');
 const penSelection = document.querySelector('.pen-selection');
 const clearButton = document.querySelector('.clear-btn');
+
 let colorMode = 'black';
+let isColoring = false;
+
+canvas.addEventListener('mousedown', (event) => {
+    // Prevents browser default drag behavior
+    event.preventDefault(); 
+    isColoring = true;
+});
+document.addEventListener('mouseup', () => {isColoring = false});
+
 
 penSelection.addEventListener('change', (event) => {
     // Check if the change event originated from an input with name 'colorMode'
@@ -25,7 +35,7 @@ function createGrid(size) {
         const square = document.createElement('div');
         square.classList.add('square');
         square.style.width = `${squareSize}px`;
-        square.style.length = `${squareSize}px`;
+        square.style.height = `${squareSize}px`;
         // Use style.background instead of style.opacity to retain border color
         square.style.background = 'rgba(0, 0, 0, 0)';
         // Initial opacity level for darken mode
@@ -33,25 +43,30 @@ function createGrid(size) {
         canvas.appendChild(square);
 
         // Event listener to change color on hover
+        square.addEventListener('mousedown', () => {colorSquare(square)});
         square.addEventListener('mouseenter', () => {
-            if (colorMode === 'black') {
-                square.style.backgroundColor = 'black';
-                square.style.opacity = '1';
-            } else if (colorMode === 'random') {
-                square.style.backgroundColor = getRandomColor();
-                square.style.opacity = '1';
-            } else if (colorMode === 'darken') {
-                // Increase opacity by 25%
-                let newOpacity = parseFloat(square.dataset.opacity) + 0.25;
-                //  Cap opacity at 100%
-                newOpacity = Math.min(newOpacity, 1)
-                square.dataset.opacity = newOpacity;
-
-                square.style.backgroundColor = `rgba(0, 0, 0, ${newOpacity})`;
-            } else if (colorMode === 'eraser') {
-                square.style.background = 'rgba(0, 0, 0, 0';
-            }
+            if (isColoring) {colorSquare(square)};
         })
+    }
+}
+
+function colorSquare(square) {
+    if (colorMode === 'black') {
+        square.style.backgroundColor = 'black';
+        square.style.opacity = '1';
+    } else if (colorMode === 'random') {
+        square.style.backgroundColor = getRandomColor();
+        square.style.opacity = '1';
+    } else if (colorMode === 'darken') {
+        // Increase opacity by 25%
+        let newOpacity = parseFloat(square.dataset.opacity) + 0.25;
+        //  Cap opacity at 100%
+        newOpacity = Math.min(newOpacity, 1)
+        square.dataset.opacity = newOpacity;
+
+        square.style.backgroundColor = `rgba(0, 0, 0, ${newOpacity})`;
+    } else if (colorMode === 'eraser') {
+        square.style.background = 'rgba(0, 0, 0, 0)';
     }
 }
 
